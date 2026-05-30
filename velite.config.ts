@@ -1,6 +1,6 @@
-import { defineConfig, s } from "velite"
+import { defineConfig, defineCollection, s } from "velite"
 
-const projects = s.collection({
+const projects = defineCollection({
   name: "Project",
   pattern: "projects/**/*.mdx",
   schema: s.object({
@@ -14,7 +14,7 @@ const projects = s.collection({
   }).transform(data => ({ ...data, permalink: `/projects/${data.title.toLowerCase().replace(/\s+/g, '-')}` }))
 })
 
-const experiences = s.collection({
+const experiences = defineCollection({
   name: "Experience",
   pattern: "experiences/**/*.mdx",
   schema: s.object({
